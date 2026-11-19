@@ -1,11 +1,8 @@
 import { formatDayLong, nowInIstanbul } from '@/lib/date'
+import { useTodayRemaining } from '@/lib/plans'
 
-type AppHeaderProps = {
-  /** Bugün kalan plan sayısı. Veri katmanı eklenene kadar 0. */
-  remainingToday?: number
-}
-
-export function AppHeader({ remainingToday = 0 }: AppHeaderProps) {
+export function AppHeader() {
+  const remainingToday = useTodayRemaining()
   const today = formatDayLong(nowInIstanbul())
 
   return (
@@ -13,9 +10,11 @@ export function AppHeader({ remainingToday = 0 }: AppHeaderProps) {
       <div className="flex min-h-14 items-center justify-between gap-3 px-4 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
         <h1 className="text-lg font-semibold tracking-tight">{today}</h1>
         <p className="text-sm text-muted-foreground">
-          {remainingToday === 0
-            ? 'Kalan plan yok'
-            : `${remainingToday} plan kaldı`}
+          {remainingToday === undefined
+            ? ''
+            : remainingToday === 0
+              ? 'Kalan plan yok'
+              : `${remainingToday} plan kaldı`}
         </p>
       </div>
     </header>
