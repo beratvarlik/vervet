@@ -1,0 +1,10 @@
+node_modules
+dist
+dev-dist
+*.local
+.vercel
+.env*
+!.env.example
+.playwright-mcp
+supabase/.temp
+supabase/.branches

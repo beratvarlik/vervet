@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+/* Koyu tema: .dark sınıfı değil, sistem ayarı (prefers-color-scheme) izlenir. */
+@custom-variant dark (@media (prefers-color-scheme: dark));
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: 'Geist Variable', sans-serif;
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --spacing-safe-top: env(safe-area-inset-top);
+  --spacing-safe-bottom: env(safe-area-inset-bottom);
+  --spacing-safe-left: env(safe-area-inset-left);
+  --spacing-safe-right: env(safe-area-inset-right);
+}
+
+/* Açık tema (varsayılan) */
+:root {
+  color-scheme: light dark;
+  --background: oklch(0.985 0.004 90);
+  --foreground: oklch(0.2 0.02 270);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.02 270);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.02 270);
+  --primary: oklch(0.55 0.19 275);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.96 0.01 270);
+  --secondary-foreground: oklch(0.25 0.03 270);
+  --muted: oklch(0.96 0.006 270);
+  --muted-foreground: oklch(0.52 0.02 270);
+  --accent: oklch(0.94 0.03 275);
+  --accent-foreground: oklch(0.3 0.08 275);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.91 0.01 270);
+  --input: oklch(0.91 0.01 270);
+  --ring: oklch(0.65 0.15 275);
+  --radius: 0.75rem;
+  /* Kategori renkleri (src/lib/categories.ts) */
+  --cat-ders: oklch(0.58 0.17 245);
+  --cat-duzenli-odeme: oklch(0.6 0.14 185);
+  --cat-odeme: oklch(0.62 0.16 150);
+  --cat-onemli: oklch(0.62 0.21 25);
+  --cat-ertelenebilir: oklch(0.7 0.14 75);
+}
+
+/* Koyu tema: sistem ayarı koyuysa */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: oklch(0.16 0.015 270);
+    --foreground: oklch(0.96 0.005 270);
+    --card: oklch(0.21 0.02 270);
+    --card-foreground: oklch(0.96 0.005 270);
+    --popover: oklch(0.21 0.02 270);
+    --popover-foreground: oklch(0.96 0.005 270);
+    --primary: oklch(0.7 0.16 275);
+    --primary-foreground: oklch(0.15 0.03 270);
+    --secondary: oklch(0.27 0.025 270);
+    --secondary-foreground: oklch(0.96 0.005 270);
+    --muted: oklch(0.27 0.02 270);
+    --muted-foreground: oklch(0.72 0.02 270);
+    --accent: oklch(0.3 0.05 275);
+    --accent-foreground: oklch(0.96 0.005 270);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.6 0.14 275);
+    --cat-ders: oklch(0.72 0.14 245);
+    --cat-duzenli-odeme: oklch(0.74 0.12 185);
+    --cat-odeme: oklch(0.75 0.15 150);
+    --cat-onemli: oklch(0.72 0.17 25);
+    --cat-ertelenebilir: oklch(0.8 0.13 75);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overscroll-behavior-y: none;
+  }
+}
