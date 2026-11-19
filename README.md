@@ -58,6 +58,15 @@ Böylece ana ekran uygulamasındaki oturum kendiliğinden düşmez. Access token
 openssl rand -base64 32
 ```
 
+Windows PowerShell'de `openssl` yoksa (linke yapıştırmaya uygun, `+ / =` içermeyen sürüm):
+
+```powershell
+$b = New-Object byte[] 32
+[System.Security.Cryptography.RNGCryptoServiceProvider]::new().GetBytes($b)
+$secret = [Convert]::ToBase64String($b).Replace('+','-').Replace('/','_').TrimEnd('=')
+$secret
+```
+
 Çıktıyı güvenli bir yere (parola yöneticisi) kaydet. Repoya veya sohbete yazma.
 
 ### 5. Edge Function'ı yapılandır ve yayınla
