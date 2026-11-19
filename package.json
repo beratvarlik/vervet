@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "gen:types": "supabase gen types typescript --local > src/types/db.ts"
+    "gen:types": "supabase gen types typescript --remote=lyagmwmrupxdakvnmcbl > src/types/db.ts"
   },
   "dependencies": {
     "@date-fns/tz": "^1.5.0",
